@@ -1,22 +1,21 @@
-// Configuración de horas y bloques
 const horaInicio = "07:00";
 const horaFin = "23:00";
 const intervaloMinutos = 45;
 
-const dias = ["", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes","Sabado","Domingo"];
+const dias = ["Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 const horario = document.getElementById("horario");
 
 function generarBloques() {
-  const filas = [];
+  const bloques = [];
   const inicio = convertirAHoras(horaInicio);
   const fin = convertirAHoras(horaFin);
 
   for (let h = new Date(inicio); h < fin; h.setMinutes(h.getMinutes() + intervaloMinutos)) {
     const siguiente = new Date(h);
     siguiente.setMinutes(h.getMinutes() + intervaloMinutos);
-    filas.push(`${formatearHora(h)} - ${formatearHora(siguiente)}`);
+    bloques.push(`${formatearHora(h)} - ${formatearHora(siguiente)}`);
   }
-  return filas;
+  return bloques;
 }
 
 function convertirAHoras(horaStr) {
@@ -32,19 +31,28 @@ function formatearHora(date) {
 
 function construirTabla() {
   const bloques = generarBloques();
+  const totalFilas = bloques.length + 1; // una fila para cabeceras
+  const totalColumnas = dias.length;
+
+  // Setear el número correcto de columnas dinámicamente
+  horario.style.gridTemplateColumns = `repeat(${totalColumnas}, 1fr)`;
   horario.innerHTML = "";
 
-  bloques.forEach((bloque, i) => {
-    dias.forEach((dia, j) => {
+  // Primera fila: cabecera con los días
+  dias.forEach(dia => {
+    const celda = document.createElement("div");
+    celda.className = "celda cabecera";
+    celda.textContent = dia;
+    horario.appendChild(celda);
+  });
+
+  // Resto de filas
+  bloques.forEach(bloque => {
+    dias.forEach((dia, i) => {
       const celda = document.createElement("div");
-      celda.classList.add("celda");
-      if (i === 0 && j === 0) {
-        celda.classList.add("cabecera");
-        celda.textContent = "Hora";
-      } else if (i === 0) {
-        celda.classList.add("cabecera");
-        celda.textContent = dia;
-      } else if (j === 0) {
+      celda.className = "celda";
+
+      if (i === 0) {
         celda.classList.add("titulo-dia");
         celda.textContent = bloque;
       } else {
@@ -55,6 +63,7 @@ function construirTabla() {
           if (texto) celda.textContent = texto;
         };
       }
+
       horario.appendChild(celda);
     });
   });
