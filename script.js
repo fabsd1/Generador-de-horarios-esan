@@ -1,6 +1,8 @@
+// Configuración de horas y bloques
 const horaInicio = "07:30";
 const horaFin = "23:15";
 const intervaloMinutos = 45;
+
 const dias = ["Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 const horario = document.getElementById("horario");
 
@@ -29,30 +31,21 @@ function formatearHora(date) {
 }
 
 function construirTabla() {
-  console.log("Construyendo horario con", horaInicio, horaFin, intervaloMinutos);
   const bloques = generarBloques();
   horario.innerHTML = "";
-  ...
-}
-  // Setear el número correcto de columnas dinámicamente
-  horario.style.gridTemplateColumns = `repeat(${totalColumnas}, 1fr)`;
-  horario.innerHTML = "";
 
-  // Primera fila: cabecera con los días
-  dias.forEach(dia => {
-    const celda = document.createElement("div");
-    celda.className = "celda cabecera";
-    celda.textContent = dia;
-    horario.appendChild(celda);
-  });
-
-  // Resto de filas
-  bloques.forEach(bloque => {
-    dias.forEach((dia, i) => {
+  bloques.forEach((bloque, filaIndex) => {
+    dias.forEach((dia, colIndex) => {
       const celda = document.createElement("div");
-      celda.className = "celda";
+      celda.classList.add("celda");
 
-      if (i === 0) {
+      if (filaIndex === 0 && colIndex === 0) {
+        celda.classList.add("cabecera");
+        celda.textContent = "Hora";
+      } else if (filaIndex === 0) {
+        celda.classList.add("cabecera");
+        celda.textContent = dia;
+      } else if (colIndex === 0) {
         celda.classList.add("titulo-dia");
         celda.textContent = bloque;
       } else {
@@ -62,8 +55,10 @@ function construirTabla() {
           const texto = prompt("¿Nombre del curso o taller?");
           if (texto) celda.textContent = texto;
         };
+        celda.ondblclick = () => {
+          celda.textContent = "";
+        };
       }
-
       horario.appendChild(celda);
     });
   });
