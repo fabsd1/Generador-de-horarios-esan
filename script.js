@@ -1,7 +1,6 @@
 const horaInicio = "07:30";
 const horaFin = "23:15";
 const intervaloMinutos = 45;
-
 const dias = ["Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 const horario = document.getElementById("horario");
 
