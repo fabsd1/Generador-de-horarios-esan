@@ -1,5 +1,5 @@
-const horaInicio = "07:00";
-const horaFin = "23:00";
+const horaInicio = "07:30";
+const horaFin = "23:15";
 const intervaloMinutos = 45;
 
 const dias = ["Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
