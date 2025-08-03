@@ -29,10 +29,11 @@ function formatearHora(date) {
 }
 
 function construirTabla() {
+  console.log("Construyendo horario con", horaInicio, horaFin, intervaloMinutos);
   const bloques = generarBloques();
-  const totalFilas = bloques.length + 1; // una fila para cabeceras
-  const totalColumnas = dias.length;
-
+  horario.innerHTML = "";
+  ...
+}
   // Setear el número correcto de columnas dinámicamente
   horario.style.gridTemplateColumns = `repeat(${totalColumnas}, 1fr)`;
   horario.innerHTML = "";
