@@ -50,11 +50,10 @@ form button:hover {
 
 #horario {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr); /* ahora 8 columnas: Hora + 7 días */
   gap: 5px;
   overflow-x: auto;
 }
-
 .celda {
   background-color: white;
   padding: 10px;
