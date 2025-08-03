@@ -1,43 +1,77 @@
-const inicio = "07:00";
-const fin = "23:00";
-const intervaloMin = 45;
-
-const dias = ["Horas", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-const contenedor = document.getElementById("horario-container");
-
-// Crear cabecera con días
-dias.forEach(dia => {
-  const celda = document.createElement("div");
-  celda.textContent = dia;
-  celda.classList.add("header");
-  contenedor.appendChild(celda);
-});
-
-// Función para sumar minutos a una hora
-function sumarMinutos(hora, minutos) {
-  const [h, m] = hora.split(":").map(Number);
-  const total = h * 60 + m + minutos;
-  const hh = String(Math.floor(total / 60)).padStart(2, "0");
-  const mm = String(total % 60).padStart(2, "0");
-  return `${hh}:${mm}`;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
 }
 
-// Generar bloques de tiempo
-let horaActual = inicio;
-while (horaActual < fin) {
-  const siguiente = sumarMinutos(horaActual, intervaloMin);
-  const rango = `${horaActual} - ${siguiente}`;
+h1 {
+  text-align: center;
+  color: #123889;
+  margin-bottom: 30px;
+}
 
-  // Fila de horas
-  const celdaHora = document.createElement("div");
-  celdaHora.textContent = rango;
-  celdaHora.classList.add("header");
-  contenedor.appendChild(celdaHora);
+form {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 
-  // Celdas vacías para cada día
-  for (let i = 1; i < dias.length; i++) {
-    contenedor.appendChild(document.createElement("div"));
-  }
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-  horaActual = siguiente;
+form input,
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #123889;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0d2b6f;
+}
+
+#horario {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  overflow-x: auto;
+}
+
+.celda {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  min-height: 40px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.cabecera {
+  background-color: #123889;
+  color: white;
+  font-weight: bold;
+}
+
+.titulo-dia {
+  background-color: #fedfd7;
+  font-weight: bold;
 }
