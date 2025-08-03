@@ -7,14 +7,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Generador de Horarios ESAN</h1>
-  </header>
-
-  <main>
-    <div id="horario"></div>
-  </main>
-
+  <h1>Generador de Horarios ESAN</h1>
+  <form id="formulario">
+    <input type="text" id="nombreCurso" placeholder="Nombre del curso" required />
+    <label>Días:</label>
+    <label><input type="checkbox" value="Lunes">L</label>
+    <label><input type="checkbox" value="Martes">K</label>
+    <label><input type="checkbox" value="Miércoles">M</label>
+    <label><input type="checkbox" value="Jueves">J</label>
+    <label><input type="checkbox" value="Viernes">V</label>
+    <label><input type="checkbox" value="Sábado">S</label>
+    <label><input type="checkbox" value="Domingo">D</label>
+    <select id="desde"></select>
+    <select id="hasta"></select>
+    <input type="color" id="color" value="#c0ebff">
+    <button type="submit">Agregar</button>
+  </form>
+  <div id="horario"></div>
   <script src="script.js"></script>
 </body>
 </html>
