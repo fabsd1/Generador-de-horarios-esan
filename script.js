@@ -3,7 +3,7 @@ const horaInicio = "07:00";
 const horaFin = "23:00";
 const intervaloMinutos = 45;
 
-const dias = ["", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+const dias = ["", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes","Sabado","Domingo"];
 const horario = document.getElementById("horario");
 
 function generarBloques() {
