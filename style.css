@@ -1,76 +1,62 @@
+/* style.css */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  background-color: #f2f2f2;
+  color: #333;
 }
 
 h1 {
-  text-align: center;
-  color: #123889;
-  margin-bottom: 30px;
-}
-
-form {
-  max-width: 600px;
-  margin: 0 auto 40px;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-form input,
-form select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-form button {
-  padding: 10px 20px;
-  background-color: #123889;
+  background-color: #4ba3c7;
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-form button:hover {
-  background-color: #0d2b6f;
+  text-align: center;
+  padding: 15px 0;
+  margin: 0;
+  font-size: 24px;
 }
 
 #horario {
   display: grid;
-  grid-template-columns: repeat(8, 1fr); /* ahora 8 columnas: Hora + 7 días */
-  gap: 5px;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1px;
+  padding: 20px;
+  max-width: 100%;
   overflow-x: auto;
 }
+
 .celda {
   background-color: white;
-  padding: 10px;
   border: 1px solid #ccc;
-  min-height: 40px;
+  padding: 10px;
   text-align: center;
   font-size: 12px;
-  border-radius: 5px;
+  min-height: 45px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.celda:hover {
+  background-color: #e0f7ff;
+  cursor: pointer;
 }
 
 .cabecera {
-  background-color: #123889;
+  background-color: #4ba3c7;
   color: white;
   font-weight: bold;
+  border-radius: 6px 6px 0 0;
 }
 
 .titulo-dia {
-  background-color: #fedfd7;
+  background-color: #eaeaea;
   font-weight: bold;
+  border-radius: 6px 0 0 6px;
+}
+
+.celda.vacia {
+  background-color: transparent;
+  border: none;
 }
